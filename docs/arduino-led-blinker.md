@@ -314,7 +314,7 @@ Now that the member variables are set up, we can continue into the component imp
 Now we will implement the behavior of the `BLINKING_ON_OFF` command. An initial implementation is shown below and may be copied into `Led.cpp` in-place of the BLINKING_ON_OFF command stub.
 
 ```cpp
-void Led ::BLINKING_ON_OFF_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, Fw::On onOff) {
+void Led ::BLINKING_ON_OFF_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::On& onOff) {
     this->m_toggleCounter = 0;               // Reset count on any successful command
     this->m_blinking = Fw::On::ON == onOff;  // Update blinking state
 
@@ -367,7 +367,7 @@ fprime-util build
 
 Congratulations!  You have now implemented some basic functionality in a new F´ component. Your command should look like this
 ```cpp
-void Led ::BLINKING_ON_OFF_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, Fw::On onOff) {
+void Led ::BLINKING_ON_OFF_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::On& onOff) {
     this->m_toggleCounter = 0;               // Reset count on any successful command
     this->m_blinking = Fw::On::ON == onOff;  // Update blinking state
 
@@ -428,7 +428,7 @@ This will ask for some input, respond with the following answers:
   [5/5] Select framing protocol
     1 - CCSDS
     2 - Fprime
-    Choose from [1/2] (1): 2
+    Choose from [1/2] (1): 1
 [INFO] Found CMake file at 'arduino-led-blinker/LedBlinker/CMakeLists.txt'
 Add LedBlinkerDeployment to arduino-led-blinker/LedBlinker/CMakeLists.txt at end of file? (yes/no) [yes]: yes
 [INFO] New deployment successfully created: /home/ethan/fprime-projects/arduino-led-blinker/LedBlinker/LedBlinkerDeployment
@@ -501,7 +501,7 @@ First, you must upload the binary into your board. The binary is located in the 
 Open the `fprime-gds` by running the following command:
 
 ```sh
-fprime-gds -n --dictionary ../../build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
+fprime-gds -n --dictionary ../../build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
 ```
 This will likely open up your browser and show the running flight software.  If it does not open a browser, navigate to `http://localhost:5000`.
 
@@ -526,7 +526,7 @@ Return to the `arduino-led-blinker/LedBlinker/LedBlinkerDeployment` and run the 
 ```sh
 # In arduino-led-blinker/LedBlinker/LedBlinkerDeployment
 fprime-util build
-fprime-gds -n --dictionary ../../build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
+fprime-gds -n --dictionary ../../build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
 
 # CTRL-C to exit
 ```
@@ -822,14 +822,14 @@ To do this, add the following lines to the `connections LedBlinkerDeployment` bl
     connections LedBlinkerDeployment {
       # Add here connections to user-defined components
       # Rate Group 1 (1Hz cycle) output is connected to led's run input
-      rateGroup1.RateGroupMemberOut[4] -> led.run
+      rateGroup1.RateGroupMemberOut[5] -> led.run
       # led's gpioSet output is connected to gpioDriver's gpioWrite input
       led.gpioSet -> gpioDriver.gpioWrite
     }
 ```
 
 > [!NOTE]
-> `rateGroup1` is preconfigured to call all `RateGroupMemberOut` at a rate of 1 Hz. We use index `RateGroupMemberOut[4]` because `RateGroupMemberOut[0]` through `RateGroupMemberOut[3]` were used previously in the `RateGroups` connection block.
+> `rateGroup1` is preconfigured to call all `RateGroupMemberOut` at a rate of 1 Hz. We use index `RateGroupMemberOut[5]` because `RateGroupMemberOut[0]` through `RateGroupMemberOut[4]` were used previously in the `RateGroups` connection block.
 
 ### Configuring The GPIO Driver
 
@@ -864,7 +864,7 @@ Next run the F´ GDS without launching the native compilation (`-n`) and with th
 
 ```sh
 # In the project root
-fprime-gds -n --dictionary ./build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
+fprime-gds -n --dictionary ./build-artifacts/teensy41/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
 ```
 
 > [!Note]

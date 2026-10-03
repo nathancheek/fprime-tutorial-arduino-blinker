@@ -23,29 +23,33 @@ constant FW_COM_BUFFER_MAX_SIZE = 128
 constant FW_SM_SIGNAL_BUFFER_MAX_SIZE = 128
 
 @ Specifies the size of the buffer that contains the serialized command arguments
-constant FW_CMD_ARG_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - SIZE_OF_FwOpcodeType - SIZE_OF_FwPacketDescriptorType
+constant FW_CMD_ARG_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - sizeof(FwOpcodeType) - sizeof(FwPacketDescriptorType)
 
 @ Specifies the maximum size of a string in a command argument
 constant FW_CMD_STRING_MAX_SIZE = 40
 
 @ Specifies the size of the buffer that contains the serialized log arguments
-constant FW_LOG_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - SIZE_OF_FwEventIdType - SIZE_OF_FwPacketDescriptorType
+constant FW_LOG_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - sizeof(FwEventIdType) - sizeof(FwPacketDescriptorType)
 
 @ Specifies the maximum size of a string in a log event
 @ Note: This constant truncates file names in assertion failure event reports
 constant FW_LOG_STRING_MAX_SIZE = 64
 
 @ Specifies the size of the buffer that contains the serialized telemetry value
-constant FW_TLM_BUFFER_MAX_SIZE = 12 + SIZE_OF_FwChanIdType + SIZE_OF_FwPacketDescriptorType
+@ Must fit the largest channel: PassiveRateGroup's PortCycleTime and PortCycleTimeHWM are
+@ PassiveRateGroupOutputPorts (10) U32s, 40 bytes. Below the fprime default
+@ (FW_COM_BUFFER_MAX_SIZE - sizeof(FwChanIdType) - sizeof(FwPacketDescriptorType), 122 bytes here) to save RAM
+constant FW_TLM_BUFFER_MAX_SIZE = 64
 
-@ Specifies the size of the buffer that contains the serialized telemetry value
+@ Specifies the size of the buffer that contains the serialized arguments of a
+@ sequencer statement; sized to match a command argument buffer
 constant FW_STATEMENT_ARG_BUFFER_MAX_SIZE = FW_CMD_ARG_BUFFER_MAX_SIZE
 
 @ Specifies the maximum size of a string in a telemetry channel
 constant FW_TLM_STRING_MAX_SIZE = 10
 
 @ Specifies the size of the buffer that contains the serialized parameter value
-constant FW_PARAM_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - SIZE_OF_FwPrmIdType - SIZE_OF_FwPacketDescriptorType
+constant FW_PARAM_BUFFER_MAX_SIZE = FW_COM_BUFFER_MAX_SIZE - sizeof(FwPrmIdType) - sizeof(FwPacketDescriptorType)
 
 @ Specifies the maximum size of a string in a parameter
 constant FW_PARAM_STRING_MAX_SIZE = 40
