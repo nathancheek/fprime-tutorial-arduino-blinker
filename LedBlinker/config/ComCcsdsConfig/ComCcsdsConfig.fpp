@@ -3,7 +3,7 @@ module ComCcsdsConfig {
     constant BASE_ID = 0x02000000
     
     module QueueSizes {
-        constant comQueue    = 3
+        constant comQueue    = 10
     }
     
     module StackSizes {
@@ -29,11 +29,11 @@ module ComCcsdsConfig {
 
     # Buffer management constants
     module BuffMgr {
-        constant frameAccumulatorSize  = 256     
+        constant frameAccumulatorSize  = 2048
         constant commsBuffSize         = 140      
-        constant commsFileBuffSize     = 0      
-        constant commsBuffCount        = 3      
-        constant commsFileBuffCount    = 0        
-        constant commsBuffMgrId        = 200     
+        constant commsFileBuffSize     = 140
+        constant commsBuffCount        = 3        
+        constant commsFileBuffCount    = 3       
+        constant commsBuffMgrId        = 200      
     }
 }

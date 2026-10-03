@@ -5,9 +5,8 @@
 // ======================================================================
 // Provides access to autocoded functions
 #include <LedBlinker/Top/LedBlinkerTopologyAc.hpp>
-// Note: Uncomment when using Svc:TlmPacketizer
-// #include <LedBlinker/Top/LedBlinkerPacketsAc.hpp>
 #include <config/FppConstantsAc.hpp>
+#include <Fw/Logger/Logger.hpp>
 
 // Necessary project-specified types
 #include <Arduino/config/FprimeArduino.hpp>
@@ -59,9 +58,10 @@ void setupTopology(const TopologyState& state) {
     // loadParameters();
     // Autocoded task kick-off (active components). Function provided by autocoder.
     startTasks(state);
+
+    comDriver.configure(&Serial);
     
     rateDriver.configure(1);
-    comDriver.configure(&Serial);
     rateDriver.start();
 }
 

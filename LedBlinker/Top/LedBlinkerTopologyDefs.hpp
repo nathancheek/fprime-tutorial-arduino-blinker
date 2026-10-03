@@ -11,26 +11,9 @@
 
 // SubtopologyTopologyDefs includes
 #include "Svc/Subtopologies/ComFprime/SubtopologyTopologyDefs.hpp"
-
 // ComFprime Enum Includes
-#include "Svc/Subtopologies/ComFprime/Ports_ComBufferQueueEnumAc.hpp"
 #include "Svc/Subtopologies/ComFprime/Ports_ComPacketQueueEnumAc.hpp"
-
-// Definitions are placed within a namespace named after the deployment
-namespace LedBlinker {
-    /**
-     * \brief required type definition to carry state
-     *
-     * The topology autocoder requires an object that carries state with the name `LedBlinker::TopologyState`. Only the type
-     * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
-     * contents are entirely up to the definition of the project. This reference application specifies hostname and port
-     * fields, which are derived by command line inputs.
-     */
-    struct TopologyState {
-        FwIndexType uartNumber;
-        PlatformIntType uartBaud;
-    };
-}  // namespace LedBlinker
+#include "Svc/Subtopologies/ComFprime/Ports_ComBufferQueueEnumAc.hpp"
 
 /**
  * \brief required ping constants
@@ -52,9 +35,30 @@ namespace LedBlinker {
  * ```
  */
 namespace PingEntries {
-    namespace LedBlinker_tlmSend {enum { WARN = 3, FATAL = 5 };}
-    namespace LedBlinker_cmdDisp {enum { WARN = 3, FATAL = 5 };}
-    namespace LedBlinker_eventLogger {enum { WARN = 3, FATAL = 5 };}
-    namespace LedBlinker_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
+    namespace LedBlinker_tlmSend      {enum { WARN = 3, FATAL = 5 };}
+    namespace LedBlinker_cmdDisp      {enum { WARN = 3, FATAL = 5 };}
+    namespace LedBlinker_eventLogger  {enum { WARN = 3, FATAL = 5 };}
+    namespace LedBlinker_rateGroup1   {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
+
+// Definitions are placed within a namespace named after the deployment
+namespace LedBlinker {
+
+    /**
+     * \brief required type definition to carry state
+     *
+     * The topology autocoder requires an object that carries state with the name `LedBlinker::TopologyState`. Only the type
+     * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
+     * contents are entirely up to the definition of the project. This reference application specifies hostname and port
+     * fields, which are derived by command line inputs.
+     */
+    struct TopologyState {
+        FwIndexType uartNumber;
+        PlatformIntType uartBaud;
+    };
+
+}  // namespace LedBlinker
+
+
+
 #endif
