@@ -23,7 +23,7 @@ The following command will spin up the F' GDS. Examples are available for UART, 
 ### UART
 
 ```sh
-fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
+fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --communication-selection uart --uart-device /dev/ttyACM0 --uart-baud 115200
 ```
 
 > [!NOTE]
@@ -36,7 +36,7 @@ fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerD
 ### TcpServer
 
 ```sh
-fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime --ip-client --ip-address <device-ip-address>
+fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --ip-client --ip-address <device-ip-address>
 ```
 
 > [!NOTE]
@@ -47,7 +47,7 @@ fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerD
 ### TcpClient
 
 ```sh
-fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json --framing-selection fprime
+fprime-gds -n --dictionary ./build-artifacts/<build name>/LedBlinker_LedBlinkerDeployment/dict/LedBlinkerDeploymentTopologyDictionary.json
 ```
 
 > [!NOTE]

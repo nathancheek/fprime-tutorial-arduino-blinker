@@ -7,13 +7,14 @@
 #define LEDBLINKERDEPLOYMENT_LEDBLINKERDEPLOYMENTTOPOLOGYDEFS_HPP
 
 #include "Fw/Types/MallocAllocator.hpp"
+#include <cstring>
 #include "LedBlinker/LedBlinkerDeployment/Top/FppConstantsAc.hpp"
 
 // SubtopologyTopologyDefs includes
-#include "Svc/Subtopologies/ComFprime/SubtopologyTopologyDefs.hpp"
-// ComFprime Enum Includes
-#include "Svc/Subtopologies/ComFprime/Ports_ComPacketQueueEnumAc.hpp"
-#include "Svc/Subtopologies/ComFprime/Ports_ComBufferQueueEnumAc.hpp"
+#include "Svc/Subtopologies/ComCcsds/SubtopologyTopologyDefs.hpp"
+// ComCcsds Enum Includes
+#include "Svc/Subtopologies/ComCcsds/Ports_ComPacketQueueEnumAc.hpp"
+#include "Svc/Subtopologies/ComCcsds/Ports_ComBufferQueueEnumAc.hpp"
 
 /**
  * \brief required ping constants
