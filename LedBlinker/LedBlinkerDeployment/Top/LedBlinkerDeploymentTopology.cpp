@@ -1,10 +1,10 @@
 // ======================================================================
-// \title  LedBlinkerTopology.cpp
+// \title  LedBlinkerDeploymentTopology.cpp
 // \brief cpp file containing the topology instantiation code
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <LedBlinker/Top/LedBlinkerTopologyAc.hpp>
+#include <LedBlinker/LedBlinkerDeployment/Top/LedBlinkerDeploymentTopologyAc.hpp>
 #include <config/FppConstantsAc.hpp>
 #include <Fw/Logger/Logger.hpp>
 
@@ -38,7 +38,7 @@ void configureTopology() {
     gpioDriver.open(Arduino::DEF_LED_BUILTIN, Arduino::GpioDriver::GpioDirection::OUT);
 }
 
-// Public functions for use in main program are namespaced with deployment name LedBlinker
+// Public functions for use in main program are namespaced with deployment namespace LedBlinker
 namespace LedBlinker {
 void setupTopology(const TopologyState& state) {
     // Autocoded initialization. Function provided by autocoder.

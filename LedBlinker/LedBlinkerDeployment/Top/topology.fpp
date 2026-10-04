@@ -8,7 +8,7 @@ module LedBlinker {
       rateGroup1
     }
 
-  topology LedBlinker {
+  topology LedBlinkerDeployment {
 
     # ----------------------------------------------------------------------
     # Subtopology imports
@@ -92,7 +92,7 @@ module LedBlinker {
       cmdDisp.seqCmdStatus     -> ComFprime.fprimeRouter.cmdResponseIn
     }
 
-    connections LedBlinker {
+    connections LedBlinkerDeployment {
       # Add here connections to user-defined components
       # Rate Group 1 (1Hz cycle) output is connected to led's run input
       rateGroup1.RateGroupMemberOut[4] -> led.run

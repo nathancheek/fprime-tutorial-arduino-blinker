@@ -4,8 +4,8 @@
 //
 // ======================================================================
 // Used to access topology functions
-#include <LedBlinker/Top/LedBlinkerTopologyAc.hpp>
-#include <LedBlinker/Top/LedBlinkerTopology.hpp>
+#include <LedBlinker/LedBlinkerDeployment/Top/LedBlinkerDeploymentTopologyAc.hpp>
+#include <LedBlinker/LedBlinkerDeployment/Top/LedBlinkerDeploymentTopology.hpp>
 
 // Used for Baremetal TaskRunner
 #include <fprime-baremetal/Os/TaskRunner/TaskRunner.hpp>

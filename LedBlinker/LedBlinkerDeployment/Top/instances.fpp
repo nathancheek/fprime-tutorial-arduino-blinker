@@ -28,7 +28,7 @@ module LedBlinker {
     stack size Default.STACK_SIZE \
     priority 97
 
-  instance led: Components.Led base id 0x0E00 \
+  instance led: LedBlinker.Led base id 0x0E00 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 95

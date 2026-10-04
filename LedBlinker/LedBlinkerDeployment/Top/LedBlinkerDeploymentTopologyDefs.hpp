@@ -1,13 +1,13 @@
 // ======================================================================
-// \title  LedBlinkerTopologyDefs.hpp
+// \title  LedBlinkerDeploymentTopologyDefs.hpp
 // \brief required header file containing the required definitions for the topology autocoder
 //
 // ======================================================================
-#ifndef LEDBLINKER_LEDBLINKERTOPOLOGYDEFS_HPP
-#define LEDBLINKER_LEDBLINKERTOPOLOGYDEFS_HPP
+#ifndef LEDBLINKERDEPLOYMENT_LEDBLINKERDEPLOYMENTTOPOLOGYDEFS_HPP
+#define LEDBLINKERDEPLOYMENT_LEDBLINKERDEPLOYMENTTOPOLOGYDEFS_HPP
 
 #include "Fw/Types/MallocAllocator.hpp"
-#include "LedBlinker/Top/FppConstantsAc.hpp"
+#include "LedBlinker/LedBlinkerDeployment/Top/FppConstantsAc.hpp"
 
 // SubtopologyTopologyDefs includes
 #include "Svc/Subtopologies/ComFprime/SubtopologyTopologyDefs.hpp"
@@ -41,7 +41,7 @@ namespace PingEntries {
     namespace LedBlinker_rateGroup1   {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
-// Definitions are placed within a namespace named after the deployment
+// Definitions are placed within the deployment namespace
 namespace LedBlinker {
 
     /**
