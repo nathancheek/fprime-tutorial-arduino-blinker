@@ -79,6 +79,9 @@ default_toolchain: teensy41
 > [!NOTE]
 > If you would like to use a different board as your default toolchain, you may change `teensy41` to your desired board. The list of available boards in the `fprime-arduino` toolchain can be found [here](https://github.com/fprime-community/fprime-arduino/blob/main/docs/board-list.md).
 
+> [!TIP]
+> If you use the [FPP extension for VS Code](https://marketplace.visualstudio.com/items?itemName=jet-propulsion-laboratory.fpp), point it at your board's build cache: in `arduino-led-blinker/.fpp-lsp`, change `build-fprime-automatic-native` to `build-fprime-automatic-teensy41` (or your board). After `fprime-util generate`, the extension's **FPP: Select Locs file inside workspace** command can also do this for you.
+
 Install `fprime-arduino` dependencies:
 ```sh
 # In arduino-led-blinker
